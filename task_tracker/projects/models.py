@@ -1,13 +1,12 @@
 from django.db import models
 import uuid
 from users.models import users
-from 
+from teams.models import Team
 
 # Create your models here.
 class Project(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=25)
-    description = models.TextField()
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)
